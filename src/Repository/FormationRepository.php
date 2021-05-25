@@ -47,4 +47,19 @@ class FormationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * Afficher la liste des Formation
+     */
+    public function getAll()
+    {
+        $entityManager = $this->getEntityManager();
+        // requète DQL : liste des Formation triés par date d'embauche décroissant
+        $query = $entityManager->createQuery(
+            "SELECT f
+                FROM App\Entity\Formation s
+                ORDER BY f.titre ASC"
+        );
+        return $query->execute();
+    }
 }

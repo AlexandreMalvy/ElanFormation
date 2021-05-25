@@ -53,7 +53,7 @@ class SessionRepository extends ServiceEntityRepository
     public function getAll()
     {
         $entityManager = $this->getEntityManager();
-        // requète DQL : liste des salariés triés par date d'embauche décroissant
+        // requète DQL : liste des session triés par date d'embauche décroissant
         $query = $entityManager->createQuery(
             "SELECT s
                 FROM App\Entity\Session s
