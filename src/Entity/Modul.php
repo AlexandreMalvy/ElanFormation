@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ModulRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,16 @@ class Modul
      */
     private $option;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Formation::class, mappedBy="module")
+     */
+    private $formations;
+
+    public function __construct()
+    {
+        $this->formations = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,33 @@ class Modul
     public function setOption(string $option): self
     {
         $this->option = $option;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Formation[]
+     */
+    public function getFormations(): Collection
+    {
+        return $this->formations;
+    }
+
+    public function addFormation(Formation $formation): self
+    {
+        if (!$this->formations->contains($formation)) {
+            $this->formations[] = $formation;
+            $formation->addModule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formation $formation): self
+    {
+        if ($this->formations->removeElement($formation)) {
+            $formation->removeModule($this);
+        }
 
         return $this;
     }
