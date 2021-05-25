@@ -29,9 +29,15 @@ class Formation
      */
     private $sessions;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Modul::class, inversedBy="formations")
+     */
+    private $module;
+
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
+        $this->module = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +83,30 @@ class Formation
                 $session->setFormation(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Modul[]
+     */
+    public function getModule(): Collection
+    {
+        return $this->module;
+    }
+
+    public function addModule(Modul $module): self
+    {
+        if (!$this->module->contains($module)) {
+            $this->module[] = $module;
+        }
+
+        return $this;
+    }
+
+    public function removeModule(Modul $module): self
+    {
+        $this->module->removeElement($module);
 
         return $this;
     }
