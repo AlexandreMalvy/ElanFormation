@@ -17,6 +17,10 @@
 		{% endblock %}
 	</head>
 	<body>
+		<nav>
+		<a href="{{ path("activitys_index") }}">Activités</a>
+		<a href="{{ path("plannings_index") }}">Plannings</a>
+		</nav>
 		{% block body %}{% endblock %}
 	</body>
 </html>

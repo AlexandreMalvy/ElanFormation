@@ -9,12 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/planning")
+ * @Route("/plannings")
  */
 class PlanningController extends AbstractController
 {
     /**
-     * @Route("/", name="planning")
+     * @Route("/", name="plannings_index")
      */
     public function index(): Response
     {

@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Modul;
+use App\Entity\Module;
 use App\Entity\Centre;
 use App\Entity\Formation;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +25,7 @@ class ActivityController extends AbstractController
                 ->getRepository(Formation::class);
 
         $modules = $this->getDoctrine()
-                ->getRepository(Modul::class);
+                ->getRepository(Module::class);
 
         return $this->render('activity/index.html.twig', [
             'centres' => $centres,
