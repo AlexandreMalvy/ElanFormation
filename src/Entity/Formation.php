@@ -30,7 +30,7 @@ class Formation
     private $sessions;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Modul::class, inversedBy="formations")
+     * @ORM\ManyToMany(targetEntity=Module::class, inversedBy="formations")
      */
     private $module;
 
@@ -88,25 +88,25 @@ class Formation
     }
 
     /**
-     * @return Collection|Modul[]
+     * @return Collection|Module[]
      */
     public function getModule(): Collection
     {
         return $this->module;
     }
 
-    public function addModule(Modul $module): self
+    public function addModule(Module $Module): self
     {
-        if (!$this->module->contains($module)) {
-            $this->module[] = $module;
+        if (!$this->module->contains($Module)) {
+            $this->module[] = $Module;
         }
 
         return $this;
     }
 
-    public function removeModule(Modul $module): self
+    public function removeModule(Module $Module): self
     {
-        $this->module->removeElement($module);
+        $this->module->removeElement($Module);
 
         return $this;
     }
