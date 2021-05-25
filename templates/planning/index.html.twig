@@ -1,20 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PlanningController!{% endblock %}
+{% block title %}Hello Session!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+	<thead>
+		<tr>
+			<th>date_debut</th>
+			<th>date_fin</th>
+			<th>type</th>
+			<th>nbr_max</th>
+			<th>nbr_min</th>
+			<th>formation</th>
+			<th>Centre</th>
+			<th>stagiaire</th>
+			<th>Modifier</th>
+			<th>Delete</th>
+		</tr>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	</thead>
+	<tbody>
+		{% for Session in Sessions %}
+			<tr>
+				<td>
+					<a href="{{ path('Session_show', {'id':Session.id}) }}">{{ Session.formation }}</a>
+				</td>
+				<td>{{ Session.DateDebut }}</td>
+				<td>{{ Session.DateFin }}</td>
+				<td>{{ Session.type }}</td>
+				<td>{{ Session.nbrMax |date('d/m/Y') }}</td>
+				<td>{{ Session.nbrMin }}</td>
+				<td>{{ Session.formation }}</td>
+				<td>{{ Session.Centre }}</td>
+				<td>{{ Session.stagiaire }}</td>
+				<td>
+					<a class="uk-button" href="{{ path('Session_edit', {'id':Session.id}) }}">Modifier</a>
+				</td>
+				<td>
+					<a class="uk-icon-link" uk-icon="trash" href="{{ path('Session_del', {'id':Session.id}) }}"></a>
+				</td>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/www/ElanFormation/src/Controller/PlanningController.php'|file_link(0) }}">src/Controller/PlanningController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/www/ElanFormation/templates/planning/index.html.twig'|file_link(0) }}">templates/planning/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+			</tr>
+		</a>
+	</tbody>
+</td></tr>{% endfor %}<td><a class="uk-button" href="{{ path('Session_add') }}">Add Session</a></td></tbody></table>{% endblock %}

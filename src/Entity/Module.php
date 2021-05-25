@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ModulRepository;
+use App\Repository\ModuleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ModulRepository::class)
+ * @ORM\Entity(repositoryClass=ModuleRepository::class)
  */
-class Modul
+class Module
 {
     /**
      * @ORM\Id
@@ -63,7 +63,7 @@ class Modul
     {
         if (!$this->formations->contains($formation)) {
             $this->formations[] = $formation;
-            $formation->addModule($this);
+            $formation->addmodule($this);
         }
 
         return $this;
@@ -72,7 +72,7 @@ class Modul
     public function removeFormation(Formation $formation): self
     {
         if ($this->formations->removeElement($formation)) {
-            $formation->removeModule($this);
+            $formation->removemodule($this);
         }
 
         return $this;

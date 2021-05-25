@@ -47,4 +47,18 @@ class SessionRepository extends ServiceEntityRepository
         ;
     }
     */
+    /**
+     * Afficher la liste des Session
+     */
+    public function getAll()
+    {
+        $entityManager = $this->getEntityManager();
+        // requète DQL : liste des salariés triés par date d'embauche décroissant
+        $query = $entityManager->createQuery(
+            "SELECT s
+                FROM App\Entity\Session s
+                ORDER BY s.date_debut ASC"
+        );
+        return $query->execute();
+    }
 }
