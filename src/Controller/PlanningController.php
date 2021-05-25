@@ -33,8 +33,8 @@ class PlanningController extends AbstractController
         }
 
 
-        // il faut crée un salarieType au préable (php bin/console make:form)
-        $form = $this->createForm(SalarieType::class, $Session);
+        // il faut crée un SessionType au préable (php bin/console make:form)
+        $form = $this->createForm(SessionType::class, $Session);
 
         $form->handleRequest($request);
         //si on soumet le formulaire et que le form est valide
@@ -45,7 +45,7 @@ class PlanningController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($Session);
             $entityManager->flush();
-            // on redirige vers la liste des salariés (salarie_list étant le nom de la route qui liste tous les salariés dans PlanningController)
+            // on redirige vers la liste des salariés (Session_list étant le nom de la route qui liste tous les salariés dans PlanningController)
             return $this->redirectToRoute('Planning_index');
         }
         /* on renvoie à la vue correspondante :
