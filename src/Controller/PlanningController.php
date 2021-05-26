@@ -21,35 +21,36 @@ class PlanningController extends AbstractController
      * @Route("/", name="plannings_index")
      */
     public function index()
-    {   
+    {
         $sessions = $this->getDoctrine()
-                ->getRepository(Session::class)
-                ->findAll();
+            ->getRepository(Session::class)
+            ->findAll();
 
         $stagiaires = $this->getDoctrine()
-                ->getRepository(Stagiaire::class)
-                ->findAll();
+            ->getRepository(Stagiaire::class)
+            ->findAll();
 
         return $this->render('planning/index.html.twig', [
             'sessions' => $sessions,
             'stagiaires' => $stagiaires
         ]);
     }
-     /**
+    /**
      * @Route("/addstagiaire", name="stagiaire_add")
      * @Route("/{id}/editstagiaire", name="stagiaire_edit")
      */
-    public function add_edit_stagiaire(Stagiaire $stagiaire = null, Request $request){
+    public function add_edit_stagiaire(Stagiaire $stagiaire = null, Request $request)
+    {
         // si le stagiaire n'existe pas, on instancie un nouveau stagiaire(on est dans le cas d'un ajout) 
-        if(!$stagiaire){
+        if (!$stagiaire) {
             $stagiaire = new Stagiaire();
         }
         //il faut créer un SalarieType au préalable (php bin/console make:form)
-        $form = $this->createForm(StagiaireType::class, $stagiaire );
+        $form = $this->createForm(StagiaireType::class, $stagiaire);
 
         $form->handleRequest($request);
         // si on soumet le formulaire et que le form est validé
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             //on récuprère les données du formulaire
             $stagiaire = $form->getData();
             //on ajoute le nouveau stagiaire
@@ -58,11 +59,10 @@ class PlanningController extends AbstractController
             $entityManager->flush();
             //on redirige vers la liste des stagiaire (stagiaire_list etant le nom de la route)
             return $this->redirectToRoute("plannings_index");
-
         }
         return $this->render('planning/add_edit_stagiaire.html.twig', [
             'formStagiaire' => $form->createView(),
-            'editMode'=> $stagiaire->getId() !== null
+            'editMode' => $stagiaire->getId() !== null
         ]);
     }
     /**
@@ -123,6 +123,15 @@ class PlanningController extends AbstractController
     {
         return $this->render('planning/show.html.twig', [
             'Session' => $Session,
+        ]);
+    }
+    /**
+     * @Route("/{id}", name="stagiaire_show", methods="GET")
+     */
+    public function showst(stagiaire $stagiaire): Response
+    {
+        return $this->render('planning/show.html.twig', [
+            'stagiaire' => $stagiaire,
         ]);
     }
 }
