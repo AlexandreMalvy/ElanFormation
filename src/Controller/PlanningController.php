@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Session;
+use App\Entity\Stagiaire;
 use App\Form\SessionType;
+use App\Form\StagiaireType;
 use App\Repository\SessionRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +20,49 @@ class PlanningController extends AbstractController
     /**
      * @Route("/", name="plannings_index")
      */
-    public function index(SessionRepository $repo): Response
-    {
+    public function index()
+    {   
+        $sessions = $this->getDoctrine()
+                ->getRepository(Session::class)
+                ->findAll();
+
+        $stagiaires = $this->getDoctrine()
+                ->getRepository(Stagiaire::class)
+                ->findAll();
+
         return $this->render('planning/index.html.twig', [
-            'sessions' => $repo->getAll(),
+            'sessions' => $sessions,
+            'stagiaires' => $stagiaires
+        ]);
+    }
+     /**
+     * @Route("/addstagiaire", name="stagiaire_add")
+     * @Route("/{id}/editstagiaire", name="stagiaire_edit")
+     */
+    public function add_edit_stagiaire(Stagiaire $stagiaire = null, Request $request){
+        // si le stagiaire n'existe pas, on instancie un nouveau stagiaire(on est dans le cas d'un ajout) 
+        if(!$stagiaire){
+            $stagiaire = new Stagiaire();
+        }
+        //il faut créer un SalarieType au préalable (php bin/console make:form)
+        $form = $this->createForm(StagiaireType::class, $stagiaire );
+
+        $form->handleRequest($request);
+        // si on soumet le formulaire et que le form est validé
+        if($form->isSubmitted() && $form->isValid()){
+            //on récuprère les données du formulaire
+            $stagiaire = $form->getData();
+            //on ajoute le nouveau stagiaire
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($stagiaire);
+            $entityManager->flush();
+            //on redirige vers la liste des stagiaire (stagiaire_list etant le nom de la route)
+            return $this->redirectToRoute("plannings_index");
+
+        }
+        return $this->render('planning/add_edit_stagiaire.html.twig', [
+            'formStagiaire' => $form->createView(),
+            'editMode'=> $stagiaire->getId() !== null
         ]);
     }
     /**
