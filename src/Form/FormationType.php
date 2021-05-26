@@ -19,7 +19,7 @@ class FormationType extends AbstractType
             ->add('titre', TextType::class, [])
             ->add('module',EntityType::class,[
                 'class' => Module::class,
-                'choice_label' => 'option',
+                'choice_label' => 'ModuleOption',
                 'multiple' => true,
                 'expanded' => true 
             ])
