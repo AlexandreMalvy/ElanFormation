@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello stagiaires!
+{% endblock %}
+
+{% block body %}
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+	<thead>
+		<tr>
+			<th>stagiaire</th>
+		</tr>
+
+	</thead>
+	<tbody>
+		{% for stagiaire in stagiaires %}
+			<tr>
+				<td>{{ stagiaire.sessions }}</td>
+			</tr>
+		</a>
+	</tbody>
+		</td></tr>
+{% endfor %}
+{% endblock %}

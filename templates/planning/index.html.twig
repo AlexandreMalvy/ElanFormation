@@ -33,7 +33,6 @@
 				<td>{{ session.nbrMin }}</td>
 				<td>{{ session.formation.titre }}</td>
 				<td>{{ session.centre.ville }}</td>
-
 				<td>
 					<a class="uk-button" href="{{ path('session_edit', {'id':session.id}) }}">Modifier</a>
 				</td>
@@ -44,10 +43,21 @@
 			</tr>
 		</a>
 	</tbody>
-</td></tr>{% endfor %}<td><a class="uk-button" href="{{ path('session_add') }}">Add Session</a></td></tbody></table><table class="uk-table uk-table-hover uk-table-middle uk-table-divider"><thead><tr><th>Nom</th><th>Prenom</th><th>Ville</th><th>Email</th></tr></thead><tbody><tr>{% for stagiaire in stagiaires %}
-<td>
-	<a href="{{ path('stagiaire_show', {'id':stagiaire.id}) }}">{{ stagiaire.nom }}</a>
-</td>
-<td>{{ stagiaire.prenom }}</td>
-<td>{{ stagiaire.ville }}</td>
-<td>{{ stagiaire.email }}</td>{% endfor %}</tr></tbody></table><a href="{{ path('stagiaire_add') }}" class="uk-button">Ajouter un stagiaire</a>{% endblock %}>>>>>>> 526ac90263c26b02ed5742d9a9c8e26962a49c56
+		</td></tr>
+		<td><a class="uk-button" href="{{ path('stagiaire_session',{'id':session.id }) }}">Numero des stagiaires</a></td>
+{% endfor %}
+		<td><a class="uk-button" href="{{ path('session_add') }}">Add Session</a></td></tbody></table>
+
+		<table class="uk-table uk-table-hover uk-table-middle uk-table-divider"><thead><tr><th>Nom</th><th>Prenom</th><th>Ville</th><th>Email</th></tr></thead><tbody><tr>{% for stagiaire in stagiaires %}
+		<td>
+			<a href="{{ path('stagiaire_show', {'id':stagiaire.id}) }}">{{ stagiaire.nom }}</a>
+		</td>
+		<td>{{ stagiaire.prenom }}</td>
+		<td>{{ stagiaire.ville }}</td>
+		<td>{{ stagiaire.email }}</td>
+{% endfor %}
+	</tr></tbody></table>
+		<a href="{{ path('stagiaire_add') }}" class="uk-button">
+		Ajouter un stagiaire
+			</a>
+{% endblock %}
