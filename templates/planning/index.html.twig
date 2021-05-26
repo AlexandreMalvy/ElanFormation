@@ -7,6 +7,7 @@
 <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
 	<thead>
 		<tr>
+			<th>Formation</th>
 			<th>date_debut</th>
 			<th>date_fin</th>
 			<th>type</th>
@@ -24,16 +25,16 @@
 		{% for session in sessions %}
 			<tr>
 				<td>
-					<a href="{{ path('Session_show', {'id':session.id}) }}">{{ session.formation }}</a>
+					<a href="{{ path('session_show', {'id':session.id}) }}">{{ session.formation.titre }}</a>
 				</td>
-				<td>{{ session.dateDebut }}</td>
-				<td>{{ session.dateFin }}</td>
+				<td>{{ session.dateDebut|date("Y:m:d") }}</td>
+				<td>{{ session.dateFin |date("Y:m:d") }}</td>
 				<td>{{ session.type }}</td>
-				<td>{{ session.nbrMax |date('d/m/Y') }}</td>
+				<td>{{ session.nbrMax }}</td>
 				<td>{{ session.nbrMin }}</td>
-				<td>{{ session.formation }}</td>
-				<td>{{ session.centre }}</td>
-				<td>{{ session.stagiaire }}</td>
+				<td>{{ session.formation.titre }}</td>
+				<td>{{ session.centre.ville }}</td>
+				<td>{#{ session.stagiaire }#}</td>
 				<td>
 					<a class="uk-button" href="{{ path('session_edit', {'id':session.id}) }}">Modifier</a>
 				</td>

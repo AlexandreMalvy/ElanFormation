@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<a href="{{path('Planning_index')}}">Retour à liste des Session
+	<a href="{{path('plannings_index')}}">Retour à liste des Session
 	</a>
 	{% if editMode %}
 		<h1>Modification d'un Session</h1>
@@ -12,13 +12,13 @@
 		<h1>Ajout d'un Session</h1>
 	{% endif %}
 	{{ form_start(formSession)}}
-	{{form_row(formSession.DateDebut)}}
-	{{form_row(formSession.DateFin)}}
+	{{form_row(formSession.dateDebut)}}
+	{{form_row(formSession.dateFin)}}
 	{{form_row(formSession.type)}}
 	{{form_row(formSession.nbrMax)}}
 	{{form_row(formSession.nbrMin)}}
 	{{form_row(formSession.formation)}}
-	{{form_row(formSession.Centre)}}
-	{{form_row(formSession.stagiaire)}}
+	{{form_row(formSession.centre)}}
+	<button type="submit" class="btn">valider</button>
 	{{ form_end(formSession)}}
 {% endblock %}

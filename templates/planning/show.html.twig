@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello
-	{{ Session.formation }}!
+	{{ Session.formation.titre }}!
 {% endblock %}
 
 {% block body %}
-	<h1>{{ Session.formation }}</h1>
+	<h1>{{ Session.formation.titre }}</h1>
 {% endblock %}
