@@ -117,7 +117,7 @@ class PlanningController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="session_show", methods="GET")
+     * @Route("/session/{id}", name="session_show", methods="GET")
      */
     public function show(Session $Session): Response
     {
@@ -126,11 +126,11 @@ class PlanningController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{id}", name="stagiaire_show", methods="GET")
+     * @Route("/stagiaire/{id}", name="stagiaire_show", methods="GET")
      */
-    public function showst(stagiaire $stagiaire): Response
+    public function showStagiaire(Stagiaire $stagiaire): Response
     {
-        return $this->render('planning/show.html.twig', [
+        return $this->render('planning/showstagiaire.html.twig', [
             'stagiaire' => $stagiaire,
         ]);
     }
