@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Centre;
 use App\Entity\Module;
 use App\Form\CentreType;
+use App\Form\ModuleType;
 use App\Entity\Formation;
 use App\Form\FormationType;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,6 +45,36 @@ class ActivityController extends AbstractController
         return $this->render('activity/add_edit_centre.html.twig', [
             'formCentre' => $form->createView(),
             'editMode'=> $centre->getId() !== null
+        ]);
+    }
+    /**
+     * @Route("/addmodule", name="module_add")
+     * @Route("/{id}/editmodule", name="module_edit")
+     */
+    public function add_edit_module(Module $module = null, Request $request){
+        // si le module n'existe pas, on instancie un nouveau module(on est dans le cas d'un ajout) 
+        if(!$module){
+            $module = new Module();
+        }
+        //il faut créer un SalarieType au préalable (php bin/console make:form)
+        $form = $this->createForm(ModuleType::class, $module );
+
+        $form->handleRequest($request);
+        // si on soumet le formulaire et que le form est validé
+        if($form->isSubmitted() && $form->isValid()){
+            //on récuprère les données du formulaire
+            $module = $form->getData();
+            //on ajoute le nouveau module
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($module);
+            $entityManager->flush();
+            //on redirige vers la liste des module (module_list etant le nom de la route)
+            return $this->redirectToRoute("activitys_index");
+
+        }
+        return $this->render('activity/add_edit_module.html.twig', [
+            'formModule' => $form->createView(),
+            'editMode'=> $module->getId() !== null
         ]);
     }
     /**
@@ -90,7 +121,8 @@ class ActivityController extends AbstractController
                 ->findAll();
 
         $modules = $this->getDoctrine()
-                ->getRepository(Module::class);
+                ->getRepository(Module::class)
+                ->findAll();
 
         return $this->render('activity/index.html.twig', [
             'centres' => $centres,

@@ -13,4 +13,12 @@
     <p>{{ formation.titre }}</p><a href="{{ path('formation_edit',{'id':formation.id}) }}">modifier</a><br>
 {% endfor %}
     <a href="{{ path('formation_add')}}">Ajouter</a>
+
+    <div>
+    <h2>Modules</h2>
+    <a href="{{ path('module_add')}}">Ajouter</a>
+    {% for module in modules %} 
+    <p>{{ module.ModuleOption }}</p><a href="{{ path('module_edit',{'id':module.id}) }}">Modifier</a>
+    {% endfor %}
+    </div>
 {% endblock %}

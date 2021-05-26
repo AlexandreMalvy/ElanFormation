@@ -22,7 +22,7 @@ class Module
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $option;
+    private $moduleOption;
 
     /**
      * @ORM\ManyToMany(targetEntity=Formation::class, mappedBy="module")
@@ -38,19 +38,6 @@ class Module
     {
         return $this->id;
     }
-
-    public function getOption(): ?string
-    {
-        return $this->option;
-    }
-
-    public function setOption(string $option): self
-    {
-        $this->option = $option;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Formation[]
      */
@@ -74,6 +61,18 @@ class Module
         if ($this->formations->removeElement($formation)) {
             $formation->removemodule($this);
         }
+
+        return $this;
+    }
+
+    public function getModuleOption(): ?string
+    {
+        return $this->moduleOption;
+    }
+
+    public function setModuleOption(string $moduleOption): self
+    {
+        $this->moduleOption = $moduleOption;
 
         return $this;
     }
