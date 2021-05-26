@@ -48,20 +48,20 @@ class PlanningController extends AbstractController
             $entityManager->persist($session);
             $entityManager->flush();
             // on redirige vers la liste des salariés (Session_list étant le nom de la route qui liste tous les salariés dans PlanningController)
-            return $this->redirectToRoute('Planning_index');
+            return $this->redirectToRoute('plannings_index');
         }
         /* on renvoie à la vue correspondante :
         - le formulaire
         - le booléen editMode (si vrai, on est dans le cas d'une éduition sinon on est dans  le cas d'un ajout)
     */
-        return $this->render('Planning/add_Session.html.twig', [
+        return $this->render('planning/add_Session.html.twig', [
             'formSession' => $form->createView(),
             'editMode' => $session->getId() !== null
         ]);
     }
 
     /**
-     * @Route("/del/{id}", name="Session_del")
+     * @Route("/del/{id}", name="session_del")
      */
     public function del_Session(Session $Session)
     {
@@ -72,15 +72,15 @@ class PlanningController extends AbstractController
         $entityManager->remove($Session);
         $entityManager->flush();
 
-        return $this->redirectToRoute('Planning_index');
+        return $this->redirectToRoute('plannings_index');
     }
 
     /**
-     * @Route("/{id}", name="Session_show", methods="GET")
+     * @Route("/{id}", name="session_show", methods="GET")
      */
     public function show(Session $Session): Response
     {
-        return $this->render('Planning/show.html.twig', [
+        return $this->render('planning/show.html.twig', [
             'Session' => $Session,
         ]);
     }
