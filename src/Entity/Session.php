@@ -59,11 +59,11 @@ class Session
     /**
      * @ORM\ManyToMany(targetEntity=Stagiaire::class, inversedBy="sessions")
      */
-    private $stagiaire;
+    private $stagiaires;
 
     public function __construct()
     {
-        $this->stagiaire = new ArrayCollection();
+        $this->stagiaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -158,15 +158,15 @@ class Session
     /**
      * @return Collection|Stagiaire[]
      */
-    public function getStagiaire(): Collection
+    public function getStagiaires(): Collection
     {
-        return $this->stagiaire;
+        return $this->stagiaires;
     }
 
     public function addStagiaire(Stagiaire $stagiaire): self
     {
-        if (!$this->stagiaire->contains($stagiaire)) {
-            $this->stagiaire[] = $stagiaire;
+        if (!$this->stagiaires->contains($stagiaire)) {
+            $this->stagiaires[] = $stagiaire;
         }
 
         return $this;
@@ -174,7 +174,7 @@ class Session
 
     public function removeStagiaire(Stagiaire $stagiaire): self
     {
-        $this->stagiaire->removeElement($stagiaire);
+        $this->stagiaires->removeElement($stagiaire);
 
         return $this;
     }

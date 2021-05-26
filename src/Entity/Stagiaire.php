@@ -37,7 +37,7 @@ class Stagiaire
     /**
      * @ORM\Column(type="string", length=15, nullable=true)
      */
-    private $NumeroPoleEmploi;
+    private $numeroPoleEmploi;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -60,7 +60,7 @@ class Stagiaire
     private $telephone;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Session::class, mappedBy="stagiaire")
+     * @ORM\ManyToMany(targetEntity=Session::class, mappedBy="stagiaires")
      */
     private $sessions;
 
@@ -112,12 +112,12 @@ class Stagiaire
 
     public function getNumeroPoleEmploi(): ?string
     {
-        return $this->NumeroPoleEmploi;
+        return $this->numeroPoleEmploi;
     }
 
     public function setNumeroPoleEmploi(?string $NumeroPoleEmploi): self
     {
-        $this->NumeroPoleEmploi = $NumeroPoleEmploi;
+        $this->numeroPoleEmploi = $NumeroPoleEmploi;
 
         return $this;
     }

@@ -84,11 +84,11 @@ class PlanningController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // on récupère les données du formulaire
             $session = $form->getData();
-            // on ajoute le nouveau salarié
+            // on ajoute le nouveau session
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($session);
             $entityManager->flush();
-            // on redirige vers la liste des salariés (Session_list étant le nom de la route qui liste tous les salariés dans PlanningController)
+            // on redirige vers la liste des session (Session_list étant le nom de la route qui liste tous les sissions dans PlanningController)
             return $this->redirectToRoute('plannings_index');
         }
         /* on renvoie à la vue correspondante :

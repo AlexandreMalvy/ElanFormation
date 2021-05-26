@@ -15,7 +15,6 @@
 			<th>nbr_min</th>
 			<th>formation</th>
 			<th>Centre</th>
-			<th>stagiaire</th>
 			<th>Modifier</th>
 			<th>Delete</th>
 		</tr>
@@ -34,7 +33,7 @@
 				<td>{{ session.nbrMin }}</td>
 				<td>{{ session.formation.titre }}</td>
 				<td>{{ session.centre.ville }}</td>
-				<td>{#{ session.stagiaire }#}</td>
+
 				<td>
 					<a class="uk-button" href="{{ path('session_edit', {'id':session.id}) }}">Modifier</a>
 				</td>
@@ -45,6 +44,4 @@
 			</tr>
 		</a>
 	</tbody>
-</td></tr>{% endfor %}<td><a class="uk-button" href="{{ path('session_add') }}">Add Session</a></td></tbody></table>
-	<a href="{{ path('stagiaire_add') }}">Ajouter un stagiaire</a>
-{% endblock %}
+</td></tr>{% endfor %}<td><a class="uk-button" href="{{ path('session_add') }}">Add Session</a></td></tbody></table><a href="{{ path('stagiaire_add') }}">Ajouter un stagiaire</a>{% endblock %}

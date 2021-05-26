@@ -49,6 +49,11 @@ class SessionType extends AbstractType
                 'class' => Centre::class,
                 'choice_label' => 'adresse',
                 'attr' => ["class" => "uk-select"]
+            ])
+            ->add('stagiaire', EntityType::class, [
+                'class' => Stagiaire::class,
+                'choice_label' => 'adresse',
+                'attr' => ["class" => "uk-select"]
             ]);
     }
 
