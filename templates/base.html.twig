@@ -10,6 +10,7 @@
 																												           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css"/>
+			<link rel="stylesheet" href="{{ asset("css/style.css") }}">
 		{% endblock %}
 
 		{% block javascripts %}
@@ -18,19 +19,21 @@
 		{% endblock %}
 	</head>
 	<body>
-		<nav>
-			{% if app.user %}
-				<span>
-					Bienvenue
-					{{ app.user.email }}
-				</span>
-				<a href="{{ path("activitys_index") }}">Activités</a>
-				<a href="{{ path("plannings_index") }}">Plannings</a>
-			{% else %}
-				<a href="{{ path('app_login') }}">Connexion</a>
-				<a href="{{ path('register') }}">Inscription</a>
-			{% endif %}
-		</nav>
-		{% block body %}{% endblock %}
+		<div class="uk-container uk-container-large">
+			<nav class="uk-navbar-container" uk-navbar>
+    			<div class="uk-navbar-center">
+					<ul class="uk-navbar-nav">
+					{% if app.user %}
+						<li class="uk-active"><a href="{{ path("activitys_index") }}">Activités</a></li>
+						<li class="uk-active"><a href="{{ path("plannings_index") }}">Plannings</a></li>
+					{% else %}
+						<li class="uk-active"><a href="{{ path('app_login') }}">Connexion</a></li>
+						<li class="uk-active"><a href="{{ path('register') }}">Inscription</a></li>
+					{% endif %}
+					</ul>
+				</div>
+			</nav>
+			{% block body %}{% endblock %}
+		</div>
 	</body>
 </html>

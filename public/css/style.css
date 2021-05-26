@@ -1,0 +1,10 @@
+*{
+    box-sizing: border-box;
+}
+.uk-active{
+    text-align: center;
+    font-size: 1.5em;
+}
+.centerbutton{
+    text-align: center;
+}
