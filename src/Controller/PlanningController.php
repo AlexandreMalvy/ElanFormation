@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Session;
+use App\Form\SessionType;
+use App\Repository\SessionRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,34 +18,34 @@ class PlanningController extends AbstractController
     /**
      * @Route("/", name="plannings_index")
      */
-    public function index(): Response
+    public function index(SessionRepository $repo): Response
     {
         return $this->render('planning/index.html.twig', [
-            'controller_name' => 'PlanningController',
+            'sessions' => $repo->getAll(),
         ]);
     }
     /**
-     * @Route("/add", name="Session_add")
-     * @Route("/edit/{id}", name="Session_edit")
+     * @Route("/add", name="session_add")
+     * @Route("/edit/{id}", name="session_edit")
      */
-    public function add_Session(Session $Session = null, Request $request)
+    public function addSession(Session $session = null, Request $request)
     {
-        if (!$Session) {
-            $Session = new Session();
+        if (!$session) {
+            $session = new Session();
         }
 
 
         // il faut crée un SessionType au préable (php bin/console make:form)
-        $form = $this->createForm(SessionType::class, $Session);
+        $form = $this->createForm(SessionType::class, $session);
 
         $form->handleRequest($request);
         //si on soumet le formulaire et que le form est valide
         if ($form->isSubmitted() && $form->isValid()) {
             // on récupère les données du formulaire
-            $Session = $form->getData();
+            $session = $form->getData();
             // on ajoute le nouveau salarié
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($Session);
+            $entityManager->persist($session);
             $entityManager->flush();
             // on redirige vers la liste des salariés (Session_list étant le nom de la route qui liste tous les salariés dans PlanningController)
             return $this->redirectToRoute('Planning_index');
@@ -54,7 +56,7 @@ class PlanningController extends AbstractController
     */
         return $this->render('Planning/add_Session.html.twig', [
             'formSession' => $form->createView(),
-            'editMode' => $Session->getId() !== null
+            'editMode' => $session->getId() !== null
         ]);
     }
 

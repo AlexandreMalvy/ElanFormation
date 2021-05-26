@@ -21,27 +21,27 @@
 
 	</thead>
 	<tbody>
-		{% for Session in Sessions %}
+		{% for session in sessions %}
 			<tr>
 				<td>
-					<a href="{{ path('Session_show', {'id':Session.id}) }}">{{ Session.formation }}</a>
+					<a href="{{ path('Session_show', {'id':session.id}) }}">{{ session.formation }}</a>
 				</td>
-				<td>{{ Session.DateDebut }}</td>
-				<td>{{ Session.DateFin }}</td>
-				<td>{{ Session.type }}</td>
-				<td>{{ Session.nbrMax |date('d/m/Y') }}</td>
-				<td>{{ Session.nbrMin }}</td>
-				<td>{{ Session.formation }}</td>
-				<td>{{ Session.Centre }}</td>
-				<td>{{ Session.stagiaire }}</td>
+				<td>{{ session.dateDebut }}</td>
+				<td>{{ session.dateFin }}</td>
+				<td>{{ session.type }}</td>
+				<td>{{ session.nbrMax |date('d/m/Y') }}</td>
+				<td>{{ session.nbrMin }}</td>
+				<td>{{ session.formation }}</td>
+				<td>{{ session.centre }}</td>
+				<td>{{ session.stagiaire }}</td>
 				<td>
-					<a class="uk-button" href="{{ path('Session_edit', {'id':Session.id}) }}">Modifier</a>
+					<a class="uk-button" href="{{ path('session_edit', {'id':session.id}) }}">Modifier</a>
 				</td>
 				<td>
-					<a class="uk-icon-link" uk-icon="trash" href="{{ path('Session_del', {'id':Session.id}) }}"></a>
+					<a class="uk-icon-link" uk-icon="trash" href="{{ path('session_del', {'id':session.id}) }}"></a>
 				</td>
 
 			</tr>
 		</a>
 	</tbody>
-</td></tr>{% endfor %}<td><a class="uk-button" href="{{ path('Session_add') }}">Add Session</a></td></tbody></table>{% endblock %}
+</td></tr>{% endfor %}<td><a class="uk-button" href="{{ path('session_add') }}">Add Session</a></td></tbody></table>{% endblock %}

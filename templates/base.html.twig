@@ -7,7 +7,7 @@
 			{% endblock %}
 		</title>
 		{# Run `composer require symfony/webpack-encore-bundle`
-		           and uncomment the following Encore helpers to start using Symfony UX #}
+												           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			{#{{ encore_entry_link_tags('app') }}#}
 		{% endblock %}
@@ -18,8 +18,9 @@
 	</head>
 	<body>
 		<nav>
-		<a href="{{ path("activitys_index") }}">Activités</a>
-		<a href="{{ path("plannings_index") }}">Plannings</a>
+			<a href="{{ path("activitys_index") }}">Activités</a>
+			<a href="{{ path("plannings_index") }}">Plannings</a>
+			<a href="{{ path("register") }}">Register</a>
 		</nav>
 		{% block body %}{% endblock %}
 	</body>

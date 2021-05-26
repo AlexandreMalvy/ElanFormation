@@ -9,11 +9,13 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class AdminFormType extends AbstractType
+class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -43,6 +45,16 @@ class AdminFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+            ])->add('roles', ChoiceType::class, [
+                'attr' => [
+                    "class" => "uk-input",
+                ],
+                "expanded" => true,
+                "mapped" => false,
+                "choices" => [
+                    "collaborateur" => "ROLE_USER",
+                    "administrateur" => "ROLE_ADMIN"
+                ]
             ]);
     }
 

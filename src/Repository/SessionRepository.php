@@ -57,7 +57,7 @@ class SessionRepository extends ServiceEntityRepository
         $query = $entityManager->createQuery(
             "SELECT s
                 FROM App\Entity\Session s
-                ORDER BY s.date_debut ASC"
+                ORDER BY s.dateDebut ASC"
         );
         return $query->execute();
     }

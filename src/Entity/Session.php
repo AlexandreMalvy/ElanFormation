@@ -22,12 +22,12 @@ class Session
     /**
      * @ORM\Column(type="date")
      */
-    private $DateDebut;
+    private $dateDebut;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $DateFin;
+    private $dateFin;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -54,7 +54,7 @@ class Session
      * @ORM\ManyToOne(targetEntity=Centre::class, inversedBy="sessions")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Centre;
+    private $centre;
 
     /**
      * @ORM\ManyToMany(targetEntity=Stagiaire::class, inversedBy="sessions")
@@ -73,24 +73,24 @@ class Session
 
     public function getDateDebut(): ?\DateTimeInterface
     {
-        return $this->DateDebut;
+        return $this->dateDebut;
     }
 
     public function setDateDebut(\DateTimeInterface $DateDebut): self
     {
-        $this->DateDebut = $DateDebut;
+        $this->dateDebut = $DateDebut;
 
         return $this;
     }
 
     public function getDateFin(): ?\DateTimeInterface
     {
-        return $this->DateFin;
+        return $this->dateFin;
     }
 
     public function setDateFin(\DateTimeInterface $DateFin): self
     {
-        $this->DateFin = $DateFin;
+        $this->dateFin = $DateFin;
 
         return $this;
     }
@@ -145,12 +145,12 @@ class Session
 
     public function getCentre(): ?Centre
     {
-        return $this->Centre;
+        return $this->centre;
     }
 
     public function setCentre(?Centre $Centre): self
     {
-        $this->Centre = $Centre;
+        $this->centre = $Centre;
 
         return $this;
     }
