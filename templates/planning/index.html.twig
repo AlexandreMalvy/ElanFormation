@@ -44,4 +44,8 @@
 			</tr>
 		</a>
 	</tbody>
-</td></tr>{% endfor %}<td><a class="uk-button" href="{{ path('session_add') }}">Add Session</a></td></tbody></table><a href="{{ path('stagiaire_add') }}">Ajouter un stagiaire</a>{% endblock %}
+</td></tr>{% endfor %}<td><a class="uk-button" href="{{ path('session_add') }}">Add Session</a></td></tbody></table><table class="uk-table uk-table-hover uk-table-middle uk-table-divider"><thead><tr><th>Nom</th><th>Prenom</th><th>Ville</th><th>Email</th></tr></thead><tbody><tr>{% for stagiaire in stagiaires %}
+<td>{{ stagiaire.nom }}</td>
+<td>{{ stagiaire.prenom }}</td>
+<td>{{ stagiaire.ville }}</td>
+<td>{{ stagiaire.email }}</td>{% endfor %}</tr></tbody></table><a href="{{ path('stagiaire_add') }}" class="uk-button">Ajouter un stagiaire</a>{% endblock %}
