@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a href="{{ path('activitys_index') }}" > Retour </a>
+
+<h2>{{ formation.titre }}</h2>
+
+{% for session in session.formation %}
+    <h5> session. </h5>
+{% endfor %}
+{% endblock %}

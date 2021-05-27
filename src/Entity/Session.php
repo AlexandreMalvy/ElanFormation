@@ -18,7 +18,11 @@ class Session
      * @ORM\Column(type="integer")
      */
     private $id;
-
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $titre;
     /**
      * @ORM\Column(type="date")
      */
@@ -61,16 +65,28 @@ class Session
      */
     private $stagiaires;
 
+
     public function __construct()
     {
         $this->stagiaires = new ArrayCollection();
     }
-
+    
     public function getId(): ?int
     {
         return $this->id;
     }
+    
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
 
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
     public function getDateDebut(): ?\DateTimeInterface
     {
         return $this->dateDebut;
@@ -178,4 +194,5 @@ class Session
 
         return $this;
     }
+
 }
