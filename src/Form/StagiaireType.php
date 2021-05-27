@@ -24,7 +24,11 @@ class StagiaireType extends AbstractType
             ->add('cp', NumberType::class, [])
             ->add('ville', TextType::class, [])
             ->add('telephone', NumberType::class, [])
-            ->add('Valider', SubmitType::class, [])
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    "class" => "uk-button uk-button-primary uk-button-large",
+                ]
+            ])
         ;
     }
 

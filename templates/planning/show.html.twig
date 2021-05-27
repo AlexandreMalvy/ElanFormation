@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1>{{ Session.formation.titre }}</h1>
+	<h1 class="joliH1" >{{ Session.formation.titre }}</h1>
 	{% for stagiaire in Session.stagiaires %}
 				<tr>
 					<td>{{ stagiaire.nom }}</td>

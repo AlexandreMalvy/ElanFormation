@@ -2,12 +2,15 @@
 
 {% block body %}
 
-<a href="{{ path('plannings_index') }}" > Retour </a>
+
+    <a class="ret" href="{{ path('plannings_index') }}" > Retour </a>
+
+
 
 {% if editMode %}
-    <h1>Modification d'un stagiaire <h1>
+    <h1 class="joliH1">Modification d'un stagiaire <h1>
 {% else %}
-    <h1>Ajout d'un stagiaire</h1>
+    <h1 class="joliH1">Ajout d'un stagiaire</h1>
 {% endif %}
 
 {{ form(formStagiaire) }}
