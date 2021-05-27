@@ -19,6 +19,9 @@ class SessionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('titre', TextType::class, ['attr' => [
+                "class" => "uk-input"
+            ]])
             ->add('dateDebut', DateType::class, [
                 'attr' => [
                     "class" => "uk-input"
