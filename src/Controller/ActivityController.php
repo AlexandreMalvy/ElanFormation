@@ -131,7 +131,7 @@ class ActivityController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{id}", name="centre_show", methods="GET")
+     * @Route("/centre/{id}", name="centre_show", methods="GET")
      */
     public function showCentre(Centre $centre): Response {
         return $this->render('activity/showCentre.html.twig', [
@@ -139,7 +139,7 @@ class ActivityController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{id}", name="formation_show", methods="GET")
+     * @Route("/formation/{id}", name="formation_show", methods="GET")
      */
     public function showFormation(Formation $formation): Response {
         return $this->render('activity/showFormation.html.twig', [
