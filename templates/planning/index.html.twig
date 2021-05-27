@@ -48,13 +48,25 @@
 {% endfor %}
 		<td><a class="uk-button" href="{{ path('session_add') }}">Add Session</a></td></tbody></table>
 
-		<table class="uk-table uk-table-hover uk-table-middle uk-table-divider"><thead><tr><th>Nom</th><th>Prenom</th><th>Ville</th><th>Email</th></tr></thead><tbody><tr>{% for stagiaire in stagiaires %}
+		<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Ville</th>
+				<th>Email</th>
+				<th>Modifier</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr>{% for stagiaire in stagiaires %}
 		<td>
 			<a href="{{ path('stagiaire_show', {'id':stagiaire.id}) }}">{{ stagiaire.nom }}</a>
 		</td>
 		<td>{{ stagiaire.prenom }}</td>
 		<td>{{ stagiaire.ville }}</td>
 		<td>{{ stagiaire.email }}</td>
+		<td><a class="uk-button" href="{{ path('stagiaire_edit', {'id':stagiaire.id}) }}">Modifier</a></td>
 {% endfor %}
 	</tr></tbody></table>
 		<a href="{{ path('stagiaire_add') }}" class="uk-button">
