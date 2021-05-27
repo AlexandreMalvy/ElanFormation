@@ -137,7 +137,7 @@ class PlanningController extends AbstractController
     
 
     /**
-     * @Route("/del/{id}", name="session_del")
+     * @Route("/delsession/{id}", name="session_del")
      */
     public function del_Session(Session $Session)
     {
@@ -150,14 +150,32 @@ class PlanningController extends AbstractController
 
         return $this->redirectToRoute('plannings_index');
     }
+     /**
+     * @Route("/delstagiaire/{id}", name="stagiaire_del")
+     */
+    public function del_stagiaire(Stagiaire $stagiaire)
+    {
 
+        $entityManager = $this->getDoctrine()->getManager();
+
+
+        $entityManager->remove($stagiaire);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('plannings_index');
+    }
     /**
      * @Route("/session/{id}", name="session_show", methods="GET")
      */
-    public function show(Session $Session): Response
+    public function show(Session $session): Response
     {
+        $stagiaires = $this->getDoctrine()
+            ->getRepository(Stagiaire::class)
+            ->findAll();
+
         return $this->render('planning/show.html.twig', [
-            'Session' => $Session,
+            'session' => $session,
+            'stagiaires' => $stagiaires
         ]);
     }
     /**
@@ -168,6 +186,19 @@ class PlanningController extends AbstractController
         return $this->render('planning/showstagiaire.html.twig', [
             'stagiaire' => $stagiaire,
         ]);
+    }
+    /**
+     * @Route("/{id}/addStagiaire",name="add_stagiaire", methods="GET")
+     */
+    public function addStagiaire(Session $session , Request $request){
+        $id = $request->get("stagiaire");
+        $manager = $this->getDoctrine()->getManager();
+        $stagiaire = $this->getDoctrine()->getRepository(Stagiaire::class)->find($id);
+        $session->addStagiaire($stagiaire);
+        $manager->flush();
+
+        return $this->redirectToRoute('plannings_index');
+
     }
 
 }

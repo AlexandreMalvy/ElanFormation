@@ -8,4 +8,8 @@
 {% for module in formation.module %}
     <p>{{ module.moduleOption }}</p>
 {% endfor %}
+
+{% for session in formation.sessions %}
+    <a href="{{ path('session_show', {'id':session.id}) }}">{{ session.titre }}</a>
+{% endfor %}
 {% endblock %}

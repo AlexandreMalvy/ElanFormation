@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello
-	{{ Session.formation.titre }}!
+{% block title %}
+	{{ session.titre }}!
 {% endblock %}
 
 {% block body %}
-	<h1>{{ Session.formation.titre }}</h1>
-	{% for stagiaire in Session.stagiaires %}
+	<h1>{{ session.titre }}</h1>
+	{% for stagiaire in session.stagiaires %}
 				<tr>
 					<td>{{ stagiaire.nom }}</td>
 				</tr>
@@ -14,4 +14,12 @@
 		</tbody>
 			</td></tr>
 	{% endfor %}
+	<form action="{{ path("add_stagiaire",{id:session.id}) }}">
+		<select name="stagiaire">
+		{% for stagiaire in stagiaires %}
+			<option value="{{ stagiaire.id }}">{{ stagiaire }}</option>
+		{% endfor %}
+		</select>
+		<input type="submit">
+	</form>
 {% endblock %}
