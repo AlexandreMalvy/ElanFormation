@@ -9,43 +9,46 @@
     text-align: center;
 }
 .ret{
-    color: rgb(71, 255, 215);
+    color: rgb(1, 48, 38);
     font-size: large;
 }
 .joliH1{
     font-size: xx-large;
-    color: tomato;
+    color: rgb(10, 2, 0);
 }
 label{
 font-size: x-large;
-color: rgb(255, 181, 71);
+color: rgb(80, 53, 12);
 }
 input {
     margin: auto;
     margin-left: 1em;
 }
-html{
-background-color:rgb(11, 94, 143) ;
-}
+
 .uk-input, .uk-select:not([multiple]):not([size]){
 height: 25px;
 }
 .uk-table th{
     background-color: rgb(204, 202, 202);
-    color: rgb(212, 6, 47);
+    color: rgb(48, 2, 11);
 }
 .uk-table td{
-    color: rgb(250, 245, 250);
+    color: rgb(3, 0, 3);
 }
 .uk-icon-link {
     color: rgb(212, 6, 47);
 }
 .uk-navbar-container:not(.uk-navbar-transparent){
-background-color: rgb(81, 81, 218);
+background-color: #39f;
 }
 .uk-link, a{
-    color :rgb(71, 255, 215);
+    color :rgb(12, 12, 12);
 }
 .uk-navbar-nav>li.uk-active>a{
-    color :rgb(71, 255, 215);
+    color :rgb(240, 248, 246);
+    font-size: large;
+}
+html{
+    color: black;
+    font-size: large;
 }

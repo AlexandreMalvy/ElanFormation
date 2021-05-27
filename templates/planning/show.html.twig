@@ -15,11 +15,11 @@
 			</td></tr>
 	{% endfor %}
 	<form action="{{ path("add_stagiaire",{id:session.id}) }}">
-		<select name="stagiaire">
+		<select class="uk-select" name="stagiaire">
 		{% for stagiaire in stagiaires %}
 			<option value="{{ stagiaire.id }}">{{ stagiaire }}</option>
 		{% endfor %}
-		</select>
-		<input type="submit">
+		</select><br>
+		<input class="uk-button uk-button-primary" type="submit">
 	</form>
 {% endblock %}
