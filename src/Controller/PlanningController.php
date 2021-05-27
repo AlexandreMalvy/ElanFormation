@@ -6,6 +6,7 @@ use App\Entity\Session;
 use App\Entity\Stagiaire;
 use App\Form\SessionType;
 use App\Form\StagiaireType;
+use App\Form\StagiaireDeSessionType;
 use App\Repository\SessionRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,6 +66,38 @@ class PlanningController extends AbstractController
             'editMode' => $stagiaire->getId() !== null
         ]);
     }
+
+    /**
+     * @Route("/Add_stagiaireSession", name="Add_stagiaireSession")
+     * @Route("/{id}/editstagiaire", name="stagiaire_edit")
+     */
+    public function Add_stagiaireSession(Stagiaire $stagiaire = null, Request $request)
+    {
+        // si le stagiaire n'existe pas, on instancie un nouveau stagiaire(on est dans le cas d'un ajout) 
+        if (!$stagiaire) {
+            $stagiaire = new Stagiaire();
+        }
+        //il faut créer un SalarieType au préalable (php bin/console make:form)
+        $form = $this->createForm(StagiaireDeSessionType::class, $stagiaire);
+
+        $form->handleRequest($request);
+        // si on soumet le formulaire et que le form est validé
+        if ($form->isSubmitted() && $form->isValid()) {
+            //on récuprère les données du formulaire
+            $stagiaire = $form->getData();
+            //on ajoute le nouveau stagiaire
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($stagiaire);
+            $entityManager->flush();
+            //on redirige vers la liste des stagiaire (stagiaire_list etant le nom de la route)
+            return $this->redirectToRoute("plannings_index");
+        }
+        return $this->render('planning/Add_stagiaireSession.html.twig', [
+            'formStagiaireDeSession' => $form->createView(),
+            'editMode' => $stagiaire->getId() !== null
+        ]);
+    }
+
     /**
      * @Route("/add", name="session_add")
      * @Route("/edit/{id}", name="session_edit")
