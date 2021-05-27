@@ -61,7 +61,8 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr>{% for stagiaire in stagiaires %}
+		{% for stagiaire in stagiaires %}
+		<tr>
 		<td>
 			<a href="{{ path('stagiaire_show', {'id':stagiaire.id}) }}">{{ stagiaire.nom }}</a>
 		</td>
@@ -69,8 +70,9 @@
 		<td>{{ stagiaire.ville }}</td>
 		<td>{{ stagiaire.email }}</td>
 		<td><a class="uk-button" href="{{ path('stagiaire_edit', {'id':stagiaire.id}) }}">Modifier</a></td>
+	</tr>
 {% endfor %}
-	</tr></tbody></table>
+	</tbody></table>
 		<a href="{{ path('stagiaire_add') }}" class="uk-button">
 		Ajouter un stagiaire
 			</a>
