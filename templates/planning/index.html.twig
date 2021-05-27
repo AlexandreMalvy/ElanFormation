@@ -8,11 +8,6 @@
 	<thead>
 		<tr>
 			<th>session</th>
-			<th>date_debut</th>
-			<th>date_fin</th>
-			<th>type</th>
-			<th>nbr_max</th>
-			<th>nbr_min</th>
 			<th>formation</th>
 			<th>Centre</th>
 			<th>Modifier</th>
@@ -26,11 +21,6 @@
 				<td>
 					<a href="{{ path('session_show', {'id':session.id}) }}">{{ session.titre }}</a>
 				</td>
-				<td>{{ session.dateDebut|date("Y:m:d") }}</td>
-				<td>{{ session.dateFin |date("Y:m:d") }}</td>
-				<td>{{ session.type }}</td>
-				<td>{{ session.nbrMax }}</td>
-				<td>{{ session.nbrMin }}</td>
 				<td>{{ session.formation.titre }}</td>
 				<td>{{ session.centre.ville }}</td>
 				<td>
@@ -53,8 +43,7 @@
 		<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
 		<thead>
 			<tr>
-				<th>Nom</th>
-				<th>Prenom</th>
+				<th>Stagiaire</th>
 				<th>Ville</th>
 				<th>Email</th>
 				<th>Modifier</th>
@@ -64,10 +53,7 @@
 		<tbody>
 		{% for stagiaire in stagiaires %}
 		<tr>
-		<td>
-			<a href="{{ path('stagiaire_show', {'id':stagiaire.id}) }}">{{ stagiaire.nom }}</a>
-		</td>
-		<td>{{ stagiaire.prenom }}</td>
+		<td><a href="{{ path('stagiaire_show', {'id':stagiaire.id}) }}">{{ stagiaire.prenom ~" "~ stagiaire.nom }}</a></td>
 		<td>{{ stagiaire.ville }}</td>
 		<td>{{ stagiaire.email }}</td>
 		<td><a class="uk-button" href="{{ path('stagiaire_edit', {'id':stagiaire.id}) }}">Modifier</a></td>
