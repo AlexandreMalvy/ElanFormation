@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+
 <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
 	<thead>
 		<tr>
@@ -26,20 +27,24 @@
 				<td>
 					<a class="uk-button uk-button-primary " href="{{ path('session_edit', {'id':session.id}) }}">Modifier</a>
 				</td>
+			{% if is_granted("ROLE_ADMIN") %}
 				<td>
 					<a class="uk-icon-link" uk-icon="trash" href="{{ path('session_del', {'id':session.id}) }}"></a>
 				</td>
-
+			{% endif %}
 			</tr>
 		</a>
 	</tbody>
 		</td></tr>
 		
 {% endfor %}
+		{% if is_granted("ROLE_ADMIN") %}
 		<td><a class="uk-button uk-button-primary " href="{{ path('session_add') }}">Add Session</a></td>
+		{% endif %}
 		</tbody>
 		</table>
 
+	
 		<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
 		<thead>
 			<tr>
@@ -57,7 +62,9 @@
 		<td>{{ stagiaire.ville }}</td>
 		<td>{{ stagiaire.email }}</td>
 		<td><a class="uk-button" href="{{ path('stagiaire_edit', {'id':stagiaire.id}) }}">Modifier</a></td>
+		{% if is_granted("ROLE_ADMIN") %}
 		<td><a class="uk-icon-link" uk-icon="trash" href="{{ path('stagiaire_del', {'id':stagiaire.id}) }}"></a></td>
+		{% endif %}
 	</tr>
 {% endfor %}
 	</tbody></table>
