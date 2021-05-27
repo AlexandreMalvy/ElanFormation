@@ -12,7 +12,9 @@
 			<th>formation</th>
 			<th>Centre</th>
 			<th>Modifier</th>
-			<th>Delete</th>
+			{% if is_granted("ROLE_ADMIN") %}
+				<th>Delete</th>
+			{% endif %}
 		</tr>
 
 	</thead>
@@ -52,7 +54,9 @@
 				<th>Ville</th>
 				<th>Email</th>
 				<th>Modifier</th>
+			{% if is_granted("ROLE_ADMIN") %}
 				<th>Supprimer</th>
+			{% endif %}
 			</tr>
 		</thead>
 		<tbody>
