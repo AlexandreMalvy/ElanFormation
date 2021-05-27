@@ -25,8 +25,11 @@
     			<div class="uk-navbar-center">
 					<ul class="uk-navbar-nav">
 					{% if app.user %}
+						{% if is_granted("ROLE_ADMIN") %}
 						<li class="uk-active"><a href="{{ path("activitys_index") }}">Activités</a></li>
+						{% endif %}
 						<li class="uk-active"><a href="{{ path("plannings_index") }}">Plannings</a></li>
+						<li class="uk-active"><a href="{{ path('logout') }}">LogOut</a></li>
 					{% else %}
 						<li class="uk-active"><a href="{{ path('app_login') }}">Connexion</a></li>
 						<li class="uk-active"><a href="{{ path('register') }}">Inscription</a></li>
