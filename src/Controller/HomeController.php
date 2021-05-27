@@ -16,9 +16,16 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
+        // $sessions = $this->getDoctrine()
+        //     ->getRepository(Session::class)
+        //     ->findBy([], ["dateDebut" => "ASC"],3);
         $sessions = $this->getDoctrine()
-            ->getRepository(Session::class)
-            ->findBy([], ["dateDebut" => "ASC"],3);
+                ->getManager()
+                ->createQuery("SELECT s FROM App\Entity\Session s WHERE s.dateDebut > CURRENT_DATE() ORDER
+                BY s.dateDebut ASC")
+                ->setMaxResults(3)
+                ->getResult();
+
 
         return $this->render('home/index.html.twig', [
             'sessions' => $sessions
