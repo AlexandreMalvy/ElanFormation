@@ -11,4 +11,7 @@
 		<p>{{ stagiaire.adresse }}</p>
 		<p>{{ stagiaire.cp ~" "~ stagiaire.ville }}</p>
 		<p>{{ stagiaire.telephone }}</p> 
+		{% for session in stagiaire.sessions %}
+			<a href="{{ path('session_show', {'id':session.id}) }}"><p>{{ session.titre }}</p></a>
+		{% endfor %}
 {% endblock %}

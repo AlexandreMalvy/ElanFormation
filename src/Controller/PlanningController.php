@@ -168,7 +168,7 @@ class PlanningController extends AbstractController
         $session->addStagiaire($stagiaire);
         $manager->flush();
 
-        return $this->redirectToRoute('plannings_index');
+        return $this->redirectToRoute('session_show',['id'=>$session->getId()]);
 
     }
 
