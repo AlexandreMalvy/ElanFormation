@@ -17,7 +17,11 @@ class CentreType extends AbstractType
             ->add('ville', TextType::class, [])
             ->add('adresse', TextType::class, [])
             ->add('cp', TextType::class, [])
-            ->add('Valider', SubmitType::class, [])
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    "class" => "uk-button uk-button-primary uk-button-large",
+                ]
+            ])
         ;
     }
 

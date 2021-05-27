@@ -34,7 +34,7 @@
 				<td>{{ session.formation.titre }}</td>
 				<td>{{ session.centre.ville }}</td>
 				<td>
-					<a class="uk-button" href="{{ path('session_edit', {'id':session.id}) }}">Modifier</a>
+					<a class="uk-button uk-button-primary " href="{{ path('session_edit', {'id':session.id}) }}">Modifier</a>
 				</td>
 				<td>
 					<a class="uk-icon-link" uk-icon="trash" href="{{ path('session_del', {'id':session.id}) }}"></a>
@@ -46,8 +46,8 @@
 		</td></tr>
 		
 {% endfor %}
-		<td><a class="uk-button" href="{{ path('session_add') }}">Add Session</a></td>
-		<td><a class="uk-button" href="{{ path('Add_stagiaireSession') }}">Add Stagiaire au Session</a></td></tbody>
+		<td><a class="uk-button uk-button-primary " href="{{ path('session_add') }}">Add Session</a></td>
+		</tbody>
 		</table>
 
 		<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
@@ -71,13 +71,11 @@
 		<td>{{ stagiaire.ville }}</td>
 		<td>{{ stagiaire.email }}</td>
 		<td><a class="uk-button" href="{{ path('stagiaire_edit', {'id':stagiaire.id}) }}">Modifier</a></td>
-		<td>
-					<a class="uk-icon-link" uk-icon="trash" href="{{ path('stagiaire_del', {'id':stagiaire.id}) }}"></a>
-				</td>
+		<td><a class="uk-icon-link" uk-icon="trash" href="{{ path('stagiaire_del', {'id':stagiaire.id}) }}"></a></td>
 	</tr>
 {% endfor %}
 	</tbody></table>
-		<a href="{{ path('stagiaire_add') }}" class="uk-button">
+		<a href="{{ path('stagiaire_add') }}" class="uk-button uk-button-primary ">
 		Ajouter un stagiaire
 			</a>
 {% endblock %}

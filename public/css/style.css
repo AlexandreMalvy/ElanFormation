@@ -8,3 +8,44 @@
 .centerbutton{
     text-align: center;
 }
+.ret{
+    color: rgb(71, 255, 215);
+    font-size: large;
+}
+.joliH1{
+    font-size: xx-large;
+    color: tomato;
+}
+label{
+font-size: x-large;
+color: rgb(255, 181, 71);
+}
+input {
+    margin: auto;
+    margin-left: 1em;
+}
+html{
+background-color:rgb(11, 94, 143) ;
+}
+.uk-input, .uk-select:not([multiple]):not([size]){
+height: 25px;
+}
+.uk-table th{
+    background-color: rgb(204, 202, 202);
+    color: rgb(212, 6, 47);
+}
+.uk-table td{
+    color: rgb(250, 245, 250);
+}
+.uk-icon-link {
+    color: rgb(212, 6, 47);
+}
+.uk-navbar-container:not(.uk-navbar-transparent){
+background-color: rgb(81, 81, 218);
+}
+.uk-link, a{
+    color :rgb(71, 255, 215);
+}
+.uk-navbar-nav>li.uk-active>a{
+    color :rgb(71, 255, 215);
+}

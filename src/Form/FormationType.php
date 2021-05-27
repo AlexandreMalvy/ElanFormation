@@ -23,7 +23,11 @@ class FormationType extends AbstractType
                 'multiple' => true,
                 'expanded' => true 
             ])
-            ->add('Valider', SubmitType::class, [])
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    "class" => "uk-button uk-button-primary uk-button-large",
+                ]
+            ])
         ;
     }
 

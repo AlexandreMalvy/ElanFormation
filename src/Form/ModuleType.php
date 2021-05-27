@@ -15,7 +15,11 @@ class ModuleType extends AbstractType
     {
         $builder
             ->add('ModuleOption', TextType::class, [])
-            ->add('Valider', SubmitType::class, [])
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    "class" => "uk-button uk-button-primary uk-button-large",
+                ]
+            ])
         ;
     }
 
