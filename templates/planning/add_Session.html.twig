@@ -12,6 +12,7 @@
 		<h1>Ajout d'un Session</h1>
 	{% endif %}
 	{{ form_start(formSession)}}
+	{{form_row(formSession.titre)}}
 	{{form_row(formSession.dateDebut)}}
 	{{form_row(formSession.dateFin)}}
 	{{form_row(formSession.type)}}
