@@ -3,9 +3,26 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <h1>Bienvenue sur le site d'Elan Formation</h1>
-        
+    <h1 class="uk-text-center">Bienvenue sur le site d'Elan Formation</h1>
+    <h3 class="uk-text-center">Les prochaines session de formation</h3>
+        <div class="uk-container uk-container-small">
         {% for session in sessions %}
-            <p>{{ session.titre }}</p>
+        <table class="uk-table uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Session</th>
+                    <th>Formation</th>
+                    <th>Date de debut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="{{path('session_show',{id:session.id}) }}">{{ session.titre }}</a></td>
+                    <td>{{ session.formation.titre }}</td>
+                    <td>{{ session.dateDebut|date("d/m/Y") }}</td>
+                </tr>
+            </tbody>
+        </table><br><br>
         {% endfor %}
+        </div>
 {% endblock %}
