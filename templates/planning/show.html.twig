@@ -6,4 +6,12 @@
 
 {% block body %}
 	<h1>{{ Session.formation.titre }}</h1>
+	{% for stagiaire in Session.stagiaires %}
+				<tr>
+					<td>{{ stagiaire.nom }}</td>
+				</tr>
+			</a>
+		</tbody>
+			</td></tr>
+	{% endfor %}
 {% endblock %}

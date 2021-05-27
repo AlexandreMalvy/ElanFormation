@@ -101,6 +101,8 @@ class PlanningController extends AbstractController
         ]);
     }
 
+    
+
     /**
      * @Route("/del/{id}", name="session_del")
      */
@@ -134,13 +136,5 @@ class PlanningController extends AbstractController
             'stagiaire' => $stagiaire,
         ]);
     }
-    /**
-     * @Route("/stagiaire/{id}", name="stagiaire_session", methods="GET")
-     */
-    public function showSessionsDeStagiaire(Stagiaire $sessions){
-        return $this->render('planning/sessionDeStagiaire.html.twig', [
-                    'sessions' =>  $sessions,
-                ]);
-       
-    }
+
 }
