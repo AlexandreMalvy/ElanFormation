@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{ session.titre }}!
+	{{ session.titre }}
 {% endblock %}
 
 {% block body %}
 	<h1>{{ session.titre }}</h1>
+	<h4>Nombre de stagiaires Inscrit : {{ count }} </h4>
 	<h3><a href="{{ path('formation_show', {'id':session.formation.id}) }}">{{ session.formation.titre }}</a></h3>
 	{% for stagiaire in session.stagiaires %}
 		<p><a uk-icon="icon:user" href="{{ path('stagiaire_show', {'id':stagiaire.id}) }}">{{ stagiaire.nom ~" "~ stagiaire.prenom }}</a></p>		

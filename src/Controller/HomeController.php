@@ -26,7 +26,6 @@ class HomeController extends AbstractController
                 ->setMaxResults(3)
                 ->getResult();
 
-
         return $this->render('home/index.html.twig', [
             'sessions' => $sessions
         ]);

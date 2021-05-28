@@ -13,6 +13,7 @@
                     <th>Session</th>
                     <th>Formation</th>
                     <th>Date de debut</th>
+                    <th>Places</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +21,7 @@
                     <td><a href="{{path('session_show',{id:session.id}) }}">{{ session.titre }}</a></td>
                     <td><a href="{{path('formation_show',{id:session.formation.id}) }}">{{ session.formation.titre }}</td>
                     <td>{{ session.dateDebut|date("d/m/Y") }}</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table><br><br>
