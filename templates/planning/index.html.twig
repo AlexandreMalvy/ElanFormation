@@ -65,7 +65,7 @@
 		<td><a href="{{ path('stagiaire_show', {'id':stagiaire.id}) }}">{{ stagiaire.prenom ~" "~ stagiaire.nom }}</a></td>
 		<td>{{ stagiaire.ville }}</td>
 		<td>{{ stagiaire.email }}</td>
-		<td><a class="uk-button" href="{{ path('stagiaire_edit', {'id':stagiaire.id}) }}">Modifier</a></td>
+		<td><a class="uk-button uk-button-primary " href="{{ path('stagiaire_edit', {'id':stagiaire.id}) }}">Modifier</a></td>
 		{% if is_granted("ROLE_ADMIN") %}
 		<td><a class="uk-icon-link" uk-icon="trash" href="{{ path('stagiaire_del', {'id':stagiaire.id}) }}"></a></td>
 		{% endif %}

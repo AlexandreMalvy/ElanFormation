@@ -3,73 +3,75 @@
 {% block title %}Hello ActivityController!{% endblock %}
 
 {% block body %}
-<nav>
-{% if is_granted("ROLE_ADMIN") %}
-    <li class="uk-active"><a href="{{ path('register') }}"> Inscription Des Collaborateur ou Administrateur </a></li>
-{% endif %}
-</nav>
-<h2>Les centres de formation</h2>
-<table class="uk-table uk-table-hover">
-    <thead>
-        <tr>
-            <th>Ville</th>
-            <th>Adresse</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-{% for centre in centres %}
-        <tr>
-            <td>{{ centre.ville }} </td>
-            <td>{{ centre.adresse }}</td>
-            <td><a href="{{ path('centre_edit',{'id':centre.id}) }}">modifier</a></td>
-        </tr>
-{% endfor %}
-    </tbody>
-</table>
-<div class="centerbutton">
-    <a class="uk-button uk-button-primary uk-button-large" href="{{ path('centre_add')}}">Ajouter</a>
-</div>
-<h2>Les formations</h2>
-<table class="uk-table uk-table-hover">
-    <thead>
-        <tr>
-            <th>Titre</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-{% for formation in formations %}
-        <tr>
-            <td><a href="{{ path('formation_show',{'id':formation.id}) }}">{{ formation.titre }}</a></td>
-            <td><a href="{{ path('formation_edit',{'id':formation.id}) }}">modifier</a></td>
-        </tr>
-{% endfor %}
-    </tbody>
-</table>
-<div class="centerbutton">
-    <a class="uk-button uk-button-primary uk-button-large" href="{{ path('formation_add')}}">Ajouter</a>
-</div>
-<h2>les Modules</h2>
+<div class="uk-container uk-container-small">
+    <nav>
+    {% if is_granted("ROLE_ADMIN") %}
+        <h4 style="text-align:center"><a href="{{ path('register') }}"> Inscription Des Collaborateur ou Administrateur </a></h4>
+    {% endif %}
+    </nav>
+    <h2>Les centres de formation</h2>
     <table class="uk-table uk-table-hover">
         <thead>
             <tr>
-                <th>Nom de l'option</th>
+                <th>Ville</th>
+                <th>Adresse</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for centre in centres %}
+            <tr>
+                <td>{{ centre.ville }} </td>
+                <td>{{ centre.adresse }}</td>
+                <td><a class="uk-button uk-button-primary "  href="{{ path('centre_edit',{'id':centre.id}) }}">modifier</a></td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <div class="centerbutton">
+        <a class="uk-button uk-button-primary uk-button-large" href="{{ path('centre_add')}}">Ajouter</a>
+    </div>
+    <h2>Les formations</h2>
+    <table class="uk-table uk-table-hover">
+        <thead>
+            <tr>
+                <th>Titre</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            {% for module in modules %} 
-                <tr>
-                    <td>{{ module.ModuleOption }}</td>
-                    <td><a href="{{ path('module_edit',{'id':module.id}) }}">Modifier</td>
-                </tr>
-            {% endfor %}
+    {% for formation in formations %}
+            <tr>
+                <td><a href="{{ path('formation_show',{'id':formation.id}) }}">{{ formation.titre }}</a></td>
+                <td><a class="uk-button uk-button-primary "  href="{{ path('formation_edit',{'id':formation.id}) }}">modifier</a></td>
+            </tr>
+    {% endfor %}
         </tbody>
     </table>
-    </br>
-        <div class="centerbutton">
-            <a class="uk-button uk-button-primary uk-button-large" href="{{ path('module_add')}}">Ajouter</a>
-        </div>
+    <div class="centerbutton">
+        <a class="uk-button uk-button-primary uk-button-large" href="{{ path('formation_add')}}">Ajouter</a>
+    </div>
+    <h2>les Modules</h2>
+        <table class="uk-table uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Nom de l'option</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for module in modules %} 
+                    <tr>
+                        <td>{{ module.ModuleOption }}</td>
+                        <td><a class="uk-button uk-button-primary "  href="{{ path('module_edit',{'id':module.id}) }}">Modifier</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </br>
+            <div class="centerbutton">
+                <a class="uk-button uk-button-primary uk-button-large" href="{{ path('module_add')}}">Ajouter</a>
+            </div>
+    </div>
 </div>
 {% endblock %}

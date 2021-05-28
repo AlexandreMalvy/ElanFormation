@@ -24,6 +24,9 @@ input {
     margin: auto;
     margin-left: 1em;
 }
+.uk-button{
+    margin:1em;
+}
 
 .uk-input, .uk-select:not([multiple]):not([size]){
 height: 25px;

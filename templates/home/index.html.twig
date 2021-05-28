@@ -18,7 +18,7 @@
             <tbody>
                 <tr>
                     <td><a href="{{path('session_show',{id:session.id}) }}">{{ session.titre }}</a></td>
-                    <td>{{ session.formation.titre }}</td>
+                    <td><a href="{{path('formation_show',{id:session.formation.id}) }}">{{ session.formation.titre }}</td>
                     <td>{{ session.dateDebut|date("d/m/Y") }}</td>
                 </tr>
             </tbody>
