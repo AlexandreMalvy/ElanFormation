@@ -19,22 +19,29 @@ class StagiaireRepository extends ServiceEntityRepository
         parent::__construct($registry, Stagiaire::class);
     }
 
-    // /**
-    //  * @return Stagiaire[] Returns an array of Stagiaire objects
-    //  */
-    /*
-    public function findByExampleField($value)
+
+        public function findAllNotInSession($session)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        $subQueryBuilder = $this->getEntityManager()->createQueryBuilder();
+        $subQuery = $subQueryBuilder
+            ->select('s.id')
+            ->from('App\Entity\Stagiaire', 's')
+            ->innerJoin('s.sessions', 'se')
+            ->where('se.id = :sessid')
+            
+        ;
+
+        $queryBuilder = $this->getEntityManager()->createQueryBuilder();
+        return $queryBuilder
+            ->select('s2')
+            ->from('App\Entity\Stagiaire', 's2')
+            ->where($queryBuilder->expr()->notIn('s2.id', $subQuery->getDQL()))
+            ->setParameter('sessid', $session->getId())
+            ->getQuery()->getResult()
         ;
     }
-    */
+    
+    
 
     /*
     public function findOneBySomeField($value): ?Stagiaire

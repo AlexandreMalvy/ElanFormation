@@ -7,19 +7,14 @@
 {% block body %}
 	<h1>{{ session.titre }}</h1>
 	{% for stagiaire in session.stagiaires %}
-				<tr>
-					<td>{{ stagiaire.nom }}</td>
-				</tr>
-			</a>
-		</tbody>
-			</td></tr>
+		<p>{{ stagiaire.nom }}</p>			
 	{% endfor %}
 	<form action="{{ path("add_stagiaire",{id:session.id}) }}">
 		<select class="uk-select" name="stagiaire">
 		{% for stagiaire in stagiaires %}
-			<option value="{{ stagiaire.id }}">{{ stagiaire }}</option>
+				<option value="{{ stagiaire.id }}">{{ stagiaire }}</option>
 		{% endfor %}
 		</select><br>
-		<input class="uk-button uk-button-primary" type="submit">
+		<input class="uk-button uk-button-primary" type="submit" value="Ajouter un stagiaire">
 	</form>
 {% endblock %}

@@ -4,49 +4,49 @@
 {% endblock %}
 
 {% block body %}
-
-<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
-	<thead>
-		<tr>
-			<th>session</th>
-			<th>formation</th>
-			<th>Centre</th>
-			<th>Modifier</th>
-			{% if is_granted("ROLE_ADMIN") %}
-				<th>Delete</th>
-			{% endif %}
-		</tr>
-
-	</thead>
-	<tbody>
-		{% for session in sessions %}
+<div class="uk-container uk-container-small">
+	<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+		<thead>
 			<tr>
-				<td>
-					<a href="{{ path('session_show', {'id':session.id}) }}">{{ session.titre }}</a>
-				</td>
-				<td>{{ session.formation.titre }}</td>
-				<td>{{ session.centre.ville }}</td>
-				<td>
-					<a class="uk-button uk-button-primary " href="{{ path('session_edit', {'id':session.id}) }}">Modifier</a>
-				</td>
-			{% if is_granted("ROLE_ADMIN") %}
-				<td>
-					<a class="uk-icon-link" uk-icon="trash" href="{{ path('session_del', {'id':session.id}) }}"></a>
-				</td>
-			{% endif %}
+				<th>session</th>
+				<th>formation</th>
+				<th>Centre</th>
+				<th>Modifier</th>
+				{% if is_granted("ROLE_ADMIN") %}
+					<th>Delete</th>
+				{% endif %}
 			</tr>
-		</a>
-	</tbody>
-		</td></tr>
-		
-{% endfor %}
-		{% if is_granted("ROLE_ADMIN") %}
-		<td><a class="uk-button uk-button-primary " href="{{ path('session_add') }}">Add Session</a></td>
-		{% endif %}
-		</tbody>
-		</table>
 
-	
+		</thead>
+		<tbody>
+			{% for session in sessions %}
+				<tr>
+					<td>
+						<a href="{{ path('session_show', {'id':session.id}) }}">{{ session.titre }}</a>
+					</td>
+					<td>{{ session.formation.titre }}</td>
+					<td>{{ session.centre.ville }}</td>
+					<td>
+						<a class="uk-button uk-button-primary " href="{{ path('session_edit', {'id':session.id}) }}">Modifier</a>
+					</td>
+				{% if is_granted("ROLE_ADMIN") %}
+					<td>
+						<a class="uk-icon-link" uk-icon="trash" href="{{ path('session_del', {'id':session.id}) }}"></a>
+					</td>
+				{% endif %}
+				</tr>
+			</a>
+		</tbody>
+			</td></tr>
+			
+	{% endfor %}
+			</tbody>
+			</table>
+		</div>
+			{% if is_granted("ROLE_ADMIN") %}
+			<div class="centerbutton"><a class="uk-button uk-button-primary " href="{{ path('session_add') }}">Add Session</a></div>
+			{% endif %}
+		<div class="uk-container uk-container-small">
 		<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
 		<thead>
 			<tr>
@@ -72,7 +72,10 @@
 	</tr>
 {% endfor %}
 	</tbody></table>
+	</div>
+	<div class="centerbutton">
 		<a href="{{ path('stagiaire_add') }}" class="uk-button uk-button-primary ">
 		Ajouter un stagiaire
 			</a>
+	</div>
 {% endblock %}

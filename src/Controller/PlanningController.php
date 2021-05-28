@@ -142,7 +142,7 @@ class PlanningController extends AbstractController
     {
         $stagiaires = $this->getDoctrine()
             ->getRepository(Stagiaire::class)
-            ->findAll();
+            ->findAllNotInSession($session);
 
         return $this->render('planning/show.html.twig', [
             'session' => $session,
