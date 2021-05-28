@@ -3,6 +3,11 @@
 {% block title %}Hello ActivityController!{% endblock %}
 
 {% block body %}
+<nav>
+{% if is_granted("ROLE_ADMIN") %}
+    <li class="uk-active"><a href="{{ path('register') }}"> Inscription Des Collaborateur ou Administrateur </a></li>
+{% endif %}
+</nav>
 <h2>Les centres de formation</h2>
 <table class="uk-table uk-table-hover">
     <thead>
